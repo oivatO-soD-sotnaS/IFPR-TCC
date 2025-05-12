@@ -1,0 +1,42 @@
+# Dependency directories
+vendor/
+
+# Environment config
+.env
+.env.*
+
+# Logs and cache
+logs/
+*.log
+tmp/
+cache/
+*.cache
+
+# PHPStorm / VSCode / IDEs
+.idea/
+.vscode/
+*.sublime*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Composer files you may want to ignore (optional)
+composer.lock
+
+# PHPUnit test results
+phpunit.xml
+.phpunit.result.cache
+
+# Docker files (if used)
+.docker/
+docker-compose.override.yml
+volumes/
+
+# Node modules
+node_modules/
+dist/
+build/
+package-lock.json
+package-lock*
+.next/
