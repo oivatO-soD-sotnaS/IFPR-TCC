@@ -1,196 +1,99 @@
 USE `intellecta`;
 
--- Inserting Users
-INSERT INTO `User` (`id_user`, `full_name`, `email`, `password`, `status`, `created_at`, `changed_at`, `profile_picture_url`) VALUES
--- Admins
-('11111111-1111-1111-1111-111111111111', 'Admin One', 'admin1@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-01 08:00:00', '2023-01-01 08:00:00', 'https://example.com/profiles/admin1.jpg'),
-('22222222-2222-2222-2222-222222222222', 'Admin Two', 'admin2@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-02 09:00:00', '2023-01-02 09:00:00', 'https://example.com/profiles/admin2.jpg'),
+-- Inserir dados na tabela `users`
+INSERT INTO `users` (`id_user`, `full_name`, `email`, `password`, `status`, `profile_picture_url`) VALUES
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'Alice Smith', 'alice.smith@example.com', '$2b$10$abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUV.abcdefghijk', 'active', 'https://example.com/alice.jpg'),
+('b1fcc1e7-9d7a-4b9e-8c3e-4d6b5e8c7a22', 'Bob Johnson', 'bob.johnson@example.com', '$2b$10$abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUV.lmnopqrstu', 'active', 'https://example.com/bob.jpg'),
+('c2gdd2f8-a0b8-4c0f-9d4f-5e7c8f9d0b33', 'Charlie Brown', 'charlie.brown@example.com', '$2b$10$abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUV.vwxyzabc', 'deactivated', NULL),
+('d3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44', 'Diana Prince', 'diana.prince@example.com', '$2b$10$abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUV.defghijk', 'active', 'https://example.com/diana.jpg'),
+('e4iff4h0-c2d0-4e21-b16h-7g9e0h1f2d55', 'Ethan Hunt', 'ethan.hunt@example.com', '$2b$10$abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRSTUV.lmnopqrs', 'active', NULL);
 
--- Teachers
-('33333333-3333-3333-3333-333333333333', 'Professor Smith', 'prof.smith@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-03 10:00:00', '2023-01-03 10:00:00', 'https://example.com/profiles/smith.jpg'),
-('44444444-4444-4444-4444-444444444444', 'Professor Johnson', 'prof.johnson@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-04 11:00:00', '2023-01-04 11:00:00', 'https://example.com/profiles/johnson.jpg'),
-('55555555-5555-5555-5555-555555555555', 'Professor Williams', 'prof.williams@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-05 12:00:00', '2023-01-05 12:00:00', 'https://example.com/profiles/williams.jpg'),
+-- Inserir dados na tabela `institutions`
+INSERT INTO `institutions` (`id_institution`, `name`, `email`, `phone_number`, `description`, `thumbnail_url`, `banner_url`, `id_user`) VALUES
+('f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66', 'Universidade Federal do Paraná (UFPR)', 'contato@ufpr.br', '(41) 3360-5000', 'Uma das mais antigas e renomadas universidades federais do Brasil.', 'https://example.com/ufpr_thumb.jpg', 'https://example.com/ufpr_banner.jpg', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'),
+('g6khh6j2-e4f2-4g43-d38j-9i1g2j3h4f77', 'Colégio Estadual do Paraná (CEP)', 'secretaria@cep.edu.br', '(41) 3234-1234', 'Tradicional colégio de ensino médio em Curitiba.', 'https://example.com/cep_thumb.jpg', 'https://example.com/cep_banner.jpg', 'b1fcc1e7-9d7a-4b9e-8c3e-4d6b5e8c7a22'),
+('h7lii7k3-f5g3-4h54-e49k-0j2h3k4i5g88', 'Escola Municipal de Artes', 'contato@emartes.org', '(45) 3523-5678', 'Escola focada no ensino de artes visuais e performáticas.', 'https://example.com/emartes_thumb.jpg', 'https://example.com/emartes_banner.jpg', 'd3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44');
 
--- Students
-('66666666-6666-6666-6666-666666666666', 'Student Alice', 'alice@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-06 13:00:00', '2023-01-06 13:00:00', 'https://example.com/profiles/alice.jpg'),
-('77777777-7777-7777-7777-777777777777', 'Student Bob', 'bob@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-07 14:00:00', '2023-01-07 14:00:00', 'https://example.com/profiles/bob.jpg'),
-('88888888-8888-8888-8888-888888888888', 'Student Charlie', 'charlie@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-08 15:00:00', '2023-01-08 15:00:00', 'https://example.com/profiles/charlie.jpg'),
-('99999999-9999-9999-9999-999999999999', 'Student Dana', 'dana@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-09 16:00:00', '2023-01-09 16:00:00', 'https://example.com/profiles/dana.jpg'),
-('00000000-0000-0000-0000-000000000001', 'Student Evan', 'evan@example.com', '$2a$10$somehashedpassword', 'active', '2023-01-10 17:00:00', '2023-01-10 17:00:00', 'https://example.com/profiles/evan.jpg');
+-- Inserir dados na tabela `institution_users`
+INSERT INTO `institution_users` (`id_institute_user`, `id_institution`, `id_user`, `role`) VALUES
+('i8mjj8l4-g6h4-4i65-f5aj-1k3i4l5j6h99', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'admin'),
+('j9nkk9m5-h7i5-4j76-g6bk-2l4j5m6k7i00', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66', 'b1fcc1e7-9d7a-4b9e-8c3e-4d6b5e8c7a22', 'teacher'),
+('k0oll0n6-i8j6-4k87-h7cl-3m5k6n7l8j11', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66', 'd3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44', 'student'),
+('l1pmm1o7-j9k7-4l98-i8dm-4n6l7o8m9k22', 'g6khh6j2-e4f2-4g43-d38j-9i1g2j3h4f77', 'b1fcc1e7-9d7a-4b9e-8c3e-4d6b5e8c7a22', 'admin'),
+('m2qnn2p8-k0l8-4m09-j9en-5o7m8p9n0l33', 'g6khh6j2-e4f2-4g43-d38j-9i1g2j3h4f77', 'e4iff4h0-c2d0-4e21-b16h-7g9e0h1f2d55', 'student');
 
--- Inserting Institutes
-INSERT INTO `Institute` (`id_institute`, `name`, `email`, `phone_number`, `description`, `thumbnail_url`, `banner_url`, `id_user`) VALUES
-('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Tech University', 'contact@techuni.edu', '+1 555-123-4567', 'Leading technology university with focus on computer science and engineering.', 'https://example.com/institutes/techuni-thumb.jpg', 'https://example.com/institutes/techuni-banner.jpg', '11111111-1111-1111-1111-111111111111'),
-('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Business School', 'info@business.edu', '+1 555-987-6543', 'Premier institution for business and management education.', 'https://example.com/institutes/business-thumb.jpg', 'https://example.com/institutes/business-banner.jpg', '22222222-2222-2222-2222-222222222222');
+-- Inserir dados na tabela `invitations`
+INSERT INTO `invitations` (`id_invitation`, `email`, `role`, `token`, `expires_at`, `accepted_at`, `id_institution`) VALUES
+('n3roo3q9-l1m9-4n10-k0fo-6p8n9q0o1m44', 'new.student@example.com', 'student', 'token123abc456def789ghi012jkl345mno678pqr901stu234vwx5', '2025-06-01 10:00:00', NULL, 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66'),
+('o4spp4r0-m2n0-4o21-l1gp-7q9o0r1p2n55', 'potential.teacher@example.com', 'teacher', 'token234bcd567efg890ijk123lmn456opq789rst012uvw345xyz6', '2025-05-25 15:00:00', NULL, 'g6khh6j2-e4f2-4g43-d38j-9i1g2j3h4f77');
 
--- Inserting InstitutionUser relationships
-INSERT INTO `InstitutionUser` (`id_institute_user`, `id_institute`, `id_user`, `role`, `joined_at`) VALUES
--- Tech University admins
-('cccccccc-cccc-cccc-cccc-cccccccccccc', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '11111111-1111-1111-1111-111111111111', 'admin', '2023-01-01 08:00:00'),
-('dddddddd-dddd-dddd-dddd-dddddddddddd', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '33333333-3333-3333-3333-333333333333', 'teacher', '2023-01-03 10:00:00'),
-('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '44444444-4444-4444-4444-444444444444', 'teacher', '2023-01-04 11:00:00'),
-('ffffffff-ffff-ffff-ffff-ffffffffffff', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '66666666-6666-6666-6666-666666666666', 'student', '2023-01-06 13:00:00'),
-('11111111-1111-1111-1111-111111111112', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '77777777-7777-7777-7777-777777777777', 'student', '2023-01-07 14:00:00'),
-('11111111-1111-1111-1111-111111111113', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '88888888-8888-8888-8888-888888888888', 'student', '2023-01-08 15:00:00'),
+-- Inserir dados na tabela `classes`
+INSERT INTO `classes` (`id_class`, `name`, `description`, `thumbnail_url`, `banner_url`, `id_institution`) VALUES
+('p5tqq5s1-n3o1-4p32-m2hq-8r0p1s2q3o66', 'Engenharia de Software I', 'Turma de introdução à Engenharia de Software.', 'https://example.com/eng_soft_thumb.jpg', 'https://example.com/eng_soft_banner.jpg', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66'),
+('q6urr6t2-o4p2-4q43-n3ir-9s1q2t3r4p77', 'Matemática Avançada', 'Turma de cálculo diferencial e integral.', 'https://example.com/mat_av_thumb.jpg', 'https://example.com/mat_av_banner.jpg', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66'),
+('r7vss7u3-p5q3-4r54-o4js-0t2r3u4s5q88', 'Língua Portuguesa - 3º Ano', 'Turma de Língua Portuguesa para o terceiro ano do ensino médio.', 'https://example.com/port_thumb.jpg', 'https://example.com/port_banner.jpg', 'g6khh6j2-e4f2-4g43-d38j-9i1g2j3h4f77');
 
--- Business School admins
-('22222222-2222-2222-2222-222222222223', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '22222222-2222-2222-2222-222222222222', 'admin', '2023-01-02 09:00:00'),
-('33333333-3333-3333-3333-333333333334', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '55555555-5555-5555-5555-555555555555', 'teacher', '2023-01-05 12:00:00'),
-('44444444-4444-4444-4444-444444444445', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '99999999-9999-9999-9999-999999999999', 'student', '2023-01-09 16:00:00'),
-('55555555-5555-5555-5555-555555555556', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '00000000-0000-0000-0000-000000000001', 'student', '2023-01-10 17:00:00');
+-- Inserir dados na tabela `class_users`
+INSERT INTO `class_users` (`id_class_user`, `id_class`, `id_user`) VALUES
+('s8wtt8v4-q6r4-4s65-p5kt-1u3s4v5t6r99', 'p5tqq5s1-n3o1-4p32-m2hq-8r0p1s2q3o66', 'd3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44'),
+('t9xuu9w5-r7s5-4t76-q6lu-2v4t5w6u7s00', 'q6urr6t2-o4p2-4q43-n3ir-9s1q2t3r4p77', 'd3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44'),
+('u0yvv0x6-s8t6-4u87-r7mv-3w5u6x7v8t11', 'r7vss7u3-p5q3-4r54-o4js-0t2r3u4s5q88', 'e4iff4h0-c2d0-4e21-b16h-7g9e0h1f2d55');
 
--- Inserting Classes
-INSERT INTO `Class` (`id_class`, `name`, `description`, `thumbnail_url`, `banner_url`, `id_institute`) VALUES
--- Tech University classes
-('66666666-6666-6666-6666-666666666661', 'CS101', 'Introduction to Computer Science', 'https://example.com/classes/cs101-thumb.jpg', 'https://example.com/classes/cs101-banner.jpg', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'),
-('77777777-7777-7777-7777-777777777771', 'CS201', 'Data Structures and Algorithms', 'https://example.com/classes/cs201-thumb.jpg', 'https://example.com/classes/cs201-banner.jpg', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'),
-('88888888-8888-8888-8888-888888888881', 'CS301', 'Database Systems', 'https://example.com/classes/cs301-thumb.jpg', 'https://example.com/classes/cs301-banner.jpg', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'),
+-- Inserir dados na tabela `subjects`
+INSERT INTO `subjects` (`id_subject`, `name`, `description`, `thumbnail_url`, `banner_url`, `id_institution`, `id_user`) VALUES
+('v1zaa1y7-t9u7-4v98-s8nw-4x6v7y8w9u22', 'Desenvolvimento Web Back-end', 'Estudo de frameworks e tecnologias para desenvolvimento web no lado do servidor.', 'https://example.com/backend_thumb.jpg', 'https://example.com/backend_banner.jpg', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66', 'b1fcc1e7-9d7a-4b9e-8c3e-4d6b5e8c7a22'),
+('w2abb2z8-u0v8-4w09-t9ox-5y7w8z9x0v33', 'Cálculo Numérico', 'Métodos numéricos para resolver problemas matemáticos.', 'https://example.com/calc_num_thumb.jpg', 'https://example.com/calc_num_banner.jpg', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66', 'b1fcc1e7-9d7a-4b9e-8c3e-4d6b5e8c7a22'),
+('x3bcc3a9-v1w9-4x10-u0py-6z8x9a0y1w44', 'Literatura Brasileira', 'Análise de obras e autores da literatura brasileira.', 'https://example.com/lit_br_thumb.jpg', 'https://example.com/lit_br_banner.jpg', 'g6khh6j2-e4f2-4g43-d38j-9i1g2j3h4f77', 'b1fcc1e7-9d7a-4b9e-8c3e-4d6b5e8c7a22');
 
--- Business School classes
-('99999999-9999-9999-9999-999999999991', 'MBA101', 'Principles of Management', 'https://example.com/classes/mba101-thumb.jpg', 'https://example.com/classes/mba101-banner.jpg', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'),
-('00000000-0000-0000-0000-000000000011', 'MBA201', 'Financial Accounting', 'https://example.com/classes/mba201-thumb.jpg', 'https://example.com/classes/mba201-banner.jpg', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb');
+-- Inserir dados na tabela `subject_classes`
+INSERT INTO `subject_classes` (`id_subject_class`, `id_class`, `id_subject`) VALUES
+('y4cdd4b0-w2x0-4y21-v1qz-7a9y0b1z2x55', 'p5tqq5s1-n3o1-4p32-m2hq-8r0p1s2q3o66', 'v1zaa1y7-t9u7-4v98-s8nw-4x6v7y8w9u22'),
+('z5dee5c1-x3y1-4z32-w2ra-8b0z1c2a3y66', 'q6urr6t2-o4p2-4q43-n3ir-9s1q2t3r4p77', 'w2abb2z8-u0v8-4w09-t9ox-5y7w8z9x0v33'),
+('a6eff6d2-y4z2-4a43-x3sb-9c1a2d3b4z77', 'r7vss7u3-p5q3-4r54-o4js-0t2r3u4s5q88', 'x3bcc3a9-v1w9-4x10-u0py-6z8x9a0y1w44');
 
--- Inserting ClassUser relationships
-INSERT INTO `ClassUser` (`id_class_user`, `id_class`, `id_user`, `joined_at`) VALUES
--- CS101 students
-('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaab', '66666666-6666-6666-6666-666666666661', '66666666-6666-6666-6666-666666666666', '2023-01-15 09:00:00'),
-('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc', '66666666-6666-6666-6666-666666666661', '77777777-7777-7777-7777-777777777777', '2023-01-15 09:00:00'),
+-- Inserir dados na tabela `materials`
+INSERT INTO `materials` (`id_material`, `title`, `file_url`, `id_subject`) VALUES
+('b7fgg7e3-z5a3-4b54-y4tc-0d2b3e4c5a88', 'Apresentação de Spring Boot', 'https://example.com/material/springboot_intro.pdf', 'v1zaa1y7-t9u7-4v98-s8nw-4x6v7y8w9u22'),
+('c8ghh8f4-a6b4-4c65-z5ud-1e3c4f5d6b99', 'Slides de Métodos de Newton', 'https://example.com/material/newton_slides.pptx', 'w2abb2z8-u0v8-4w09-t9ox-5y7w8z9x0v33'),
+('d9iij9g5-b7c5-4d76-a6ve-2f4d5g6e7c00', 'Artigo sobre Modernismo', 'https://example.com/material/modernismo_artigo.doc', 'x3bcc3a9-v1w9-4x10-u0py-6z8x9a0y1w44');
 
--- CS201 students
-('cccccccc-cccc-cccc-cccc-cccccccccccd', '77777777-7777-7777-7777-777777777771', '77777777-7777-7777-7777-777777777777', '2023-01-15 10:00:00'),
-('dddddddd-dddd-dddd-dddd-ddddddddddde', '77777777-7777-7777-7777-777777777771', '88888888-8888-8888-8888-888888888888', '2023-01-15 10:00:00'),
+-- Inserir dados na tabela `assignments`
+INSERT INTO `assignments` (`id_assignment`, `title`, `description`, `deadline`, `attachment`, `id_subject`) VALUES
+('e0jkk0h6-c8d6-4e87-b7wf-3g5e6h7f8d11', 'Projeto Final - API REST', 'Desenvolver uma API RESTful completa utilizando Spring Boot.', '2025-06-30', NULL, 'v1zaa1y7-t9u7-4v98-s8nw-4x6v7y8w9u22'),
+('f1kll1i7-d9e7-4f98-c8xg-4h6f7i8g9e22', 'Lista de Exercícios 1 - Cálculo Numérico', 'Resolver os exercícios da lista sobre resolução de equações não lineares.', '2025-06-15', 'https://example.com/assignment/lista1_calc_num.pdf', 'w2abb2z8-u0v8-4w09-t9ox-5y7w8z9x0v33'),
+('g2lmm2j8-e0f8-4g09-d9yh-5i7g8j9h0f33', 'Análise Crítica - O Cortiço', 'Produzir uma análise crítica da obra "O Cortiço" de Aluísio Azevedo.', '2025-07-05', NULL, 'x3bcc3a9-v1w9-4x10-u0py-6z8x9a0y1w44');
 
--- CS301 students
-('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeef', '88888888-8888-8888-8888-888888888881', '66666666-6666-6666-6666-666666666666', '2023-01-15 11:00:00'),
-('ffffffff-ffff-ffff-ffff-fffffffffff0', '88888888-8888-8888-8888-888888888881', '88888888-8888-8888-8888-888888888888', '2023-01-15 11:00:00'),
+-- Inserir dados na tabela `submissions`
+INSERT INTO `submissions` (`id_submission`, `id_assignment`, `id_user`, `submitted_at`, `file`, `grade`, `concept`, `feedback`) VALUES
+('h3mnn3k9-f1g9-4h10-e0zi-6j8h9k0i1g44', 'e0jkk0h6-c8d6-4e87-b7wf-3g5e6h7f8d11', 'd3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44', '2025-06-28 14:30:00', 'https://example.com/submission/projeto_alice.zip', 9.5, 'Excelente', 'Ótimo trabalho, com boa organização de código.'),
+('i4noo4l0-g2h0-4i21-f1aj-7k9i0l1j2h55', 'f1kll1i7-d9e7-4f98-c8xg-4h6f7i8g9e22', 'd3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44', '2025-06-14 20:00:00', 'https://example.com/submission/lista1_diana.pdf', 8.0, 'Bom', 'Atenção aos detalhes em alguns cálculos.'),
+('j5opp5m1-h3i1-4j32-g2bk-8l0j1m2k3i66', 'g2lmm2j8-e0f8-4g09-d9yh-5i7g8j9h0f33', 'e4iff4h0-c2d0-4e21-b16h-7g9e0h1f2d55', '2025-07-03 10:00:00', 'https://example.com/submission/analise_ethan.docx', NULL, NULL, NULL);
 
--- MBA101 students
-('11111111-1111-1111-1111-111111111114', '99999999-9999-9999-9999-999999999991', '99999999-9999-9999-9999-999999999999', '2023-01-16 09:00:00'),
-('22222222-2222-2222-2222-222222222225', '99999999-9999-9999-9999-999999999991', '00000000-0000-0000-0000-000000000001', '2023-01-16 09:00:00'),
+-- Inserir dados na tabela `forum_messages`
+INSERT INTO `forum_messages` (`id_message`, `id_subject`, `content`) VALUES
+('k6pqq6n2-i4j2-4k43-h3cl-9m1k2n3l4j77', 'v1zaa1y7-t9u7-4v98-s8nw-4x6v7y8w9u22', 'Dúvida sobre configuração do banco de dados no Spring Boot.'),
+('l7qrr7o3-j5k3-4l54-i4dm-0n2l3o4m5k88', 'v1zaa1y7-t9u7-4v98-s8nw-4x6v7y8w9u22', 'Resposta: Verificar o arquivo application.properties.'),
+('m8rss8p4-k6l4-4m65-j5en-1o3m4p5n6l99', 'x3bcc3a9-v1w9-4x10-u0py-6z8x9a0y1w44', 'Qual a principal característica do Naturalismo em "O Cortiço"?');
 
--- MBA201 students
-('33333333-3333-3333-3333-333333333336', '00000000-0000-0000-0000-000000000011', '00000000-0000-0000-0000-000000000001', '2023-01-16 10:00:00');
+-- Inserir dados na tabela `events`
+INSERT INTO `events` (`id_event`, `title`, `description`, `event_date`) VALUES
+('n9stt9q5-l7m5-4n76-k6fo-2p4n5q6o7m00', 'Palestra: Carreira em TI', 'Palestra com profissionais da área de Tecnologia da Informação.', '2025-07-10 19:00:00'),
+('o0uww0r6-m8n6-4o87-l7gp-3q5o6r7p8n11', 'Seminário de Pesquisa', 'Apresentação de projetos de pesquisa dos alunos.', '2025-08-01 09:00:00'),
+('p1vxx1s7-n9o7-4p98-m8hq-4r6p7s8q9o22', 'Prazo Final do Projeto', 'Entrega final do Projeto de Desenvolvimento Web.', '2025-06-30 23:59:59');
 
--- Inserting Disciplines
-INSERT INTO `Discipline` (`id_discipline`, `name`, `description`, `thumbnail_url`, `banner_url`, `id_institute`, `id_user`) VALUES
--- Tech University disciplines
-('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac', 'Computer Science', 'Fundamentals of computing and programming', 'https://example.com/disciplines/cs-thumb.jpg', 'https://example.com/disciplines/cs-banner.jpg', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '33333333-3333-3333-3333-333333333333'),
-('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc', 'Algorithms', 'Study of efficient algorithms and data structures', 'https://example.com/disciplines/algo-thumb.jpg', 'https://example.com/disciplines/algo-banner.jpg', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '44444444-4444-4444-4444-444444444444'),
-('cccccccc-cccc-cccc-cccc-cccccccccccd', 'Database Systems', 'Design and implementation of database systems', 'https://example.com/disciplines/db-thumb.jpg', 'https://example.com/disciplines/db-banner.jpg', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '33333333-3333-3333-3333-333333333333'),
+-- Inserir dados na tabela `institutional_events`
+INSERT INTO `institutional_events` (`id_institutional_event`, `id_event`, `id_institution`) VALUES
+('q2yzz2t8-o0p8-4q09-n9ir-5s7q8t9r0p33', 'n9stt9q5-l7m5-4n76-k6fo-2p4n5q6o7m00', 'f5jgg5i1-d3e1-4f32-c27i-8h0f1i2g3e66'),
+('r3aab3u9-p1q9-4r10-o0js-6t8r9u0s1q44', 'o0uww0r6-m8n6-4o87-l7gp-3q5o6r7p8n11', 'g6khh6j2-e4f2-4g43-d38j-9i1g2j3h4f77');
 
--- Business School disciplines
-('dddddddd-dddd-dddd-dddd-ddddddddddde', 'Management', 'Principles of business management', 'https://example.com/disciplines/mgmt-thumb.jpg', 'https://example.com/disciplines/mgmt-banner.jpg', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '55555555-5555-5555-5555-555555555555'),
-('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeef', 'Finance', 'Financial accounting and corporate finance', 'https://example.com/disciplines/fin-thumb.jpg', 'https://example.com/disciplines/fin-banner.jpg', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '55555555-5555-5555-5555-555555555555');
+-- Inserir dados na tabela `subject_events`
+INSERT INTO `subject_events` (`id_subject_event`, `id_event`, `id_subject`) VALUES
+('s4bcc4v0-q2r0-4s21-p1kt-7u9s0v1t2r55', 'p1vxx1s7-n9o7-4p98-m8hq-4r6p7s8q9o22', 'v1zaa1y7-t9u7-4v98-s8nw-4x6v7y8w9u22');
 
--- Inserting DisciplineClass relationships
-INSERT INTO `DisciplineClass` (`id_discipline_class`, `id_class`, `id_discipline`) VALUES
--- Tech University
-('ffffffff-ffff-ffff-ffff-fffffffffff1', '66666666-6666-6666-6666-666666666661', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac'),
-('00000000-0000-0000-0000-000000000012', '77777777-7777-7777-7777-777777777771', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc'),
-('11111111-1111-1111-1111-111111111115', '88888888-8888-8888-8888-888888888881', 'cccccccc-cccc-cccc-cccc-cccccccccccd'),
+-- Inserir dados na tabela `user_events`
+INSERT INTO `user_events` (`id_user_event`, `id_event`, `id_user`) VALUES
+('t5cdd5w1-r3s1-4t32-q2lu-8v0t1w2v3s66', 'p1vxx1s7-n9o7-4p98-m8hq-4r6p7s8q9o22', 'd3hee3g9-b1c9-4d10-a05g-6f8d9g0e1c44');
 
--- Business School
-('22222222-2222-2222-2222-222222222226', '99999999-9999-9999-9999-999999999991', 'dddddddd-dddd-dddd-dddd-ddddddddddde'),
-('33333333-3333-3333-3333-333333333337', '00000000-0000-0000-0000-000000000011', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeef');
-
--- Inserting Materials
-INSERT INTO `Material` (`id_material`, `title`, `file_url`, `created_at`, `changed_at`, `id_discipline`) VALUES
--- Computer Science materials
-('44444444-4444-4444-4444-444444444448', 'Introduction to Programming', 'https://example.com/materials/prog-intro.pdf', '2023-02-01 09:00:00', '2023-02-01 09:00:00', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac'),
-('55555555-5555-5555-5555-555555555559', 'Python Basics', 'https://example.com/materials/python-basics.pdf', '2023-02-02 10:00:00', '2023-02-02 10:00:00', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac'),
-
--- Algorithms materials
-('66666666-6666-6666-6666-666666666660', 'Sorting Algorithms', 'https://example.com/materials/sorting-algos.pdf', '2023-02-03 11:00:00', '2023-02-03 11:00:00', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc'),
-('77777777-7777-7777-7777-777777777771', 'Graph Theory', 'https://example.com/materials/graph-theory.pdf', '2023-02-04 12:00:00', '2023-02-04 12:00:00', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc'),
-
--- Database materials
-('88888888-8888-8888-8888-888888888882', 'SQL Basics', 'https://example.com/materials/sql-basics.pdf', '2023-02-05 13:00:00', '2023-02-05 13:00:00', 'cccccccc-cccc-cccc-cccc-cccccccccccd'),
-
--- Management materials
-('99999999-9999-9999-9999-999999999993', 'Management Principles', 'https://example.com/materials/mgmt-principles.pdf', '2023-02-06 14:00:00', '2023-02-06 14:00:00', 'dddddddd-dddd-dddd-dddd-ddddddddddde'),
-
--- Finance materials
-('00000000-0000-0000-0000-000000000014', 'Accounting Basics', 'https://example.com/materials/accounting-basics.pdf', '2023-02-07 15:00:00', '2023-02-07 15:00:00', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeef');
-
--- Inserting Assignments
-INSERT INTO `Assignment` (`id_assignment`, `title`, `description`, `deadline`, `attachment`, `id_discipline`) VALUES
--- Computer Science assignments
-('11111111-1111-1111-1111-111111111116', 'Programming Exercise 1', 'Write a simple calculator program in Python', '2023-03-01', 'https://example.com/assignments/prog-ex1.pdf', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac'),
-('22222222-2222-2222-2222-222222222227', 'Midterm Project', 'Develop a small application with GUI', '2023-03-15', 'https://example.com/assignments/midterm-proj.pdf', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac'),
-
--- Algorithms assignments
-('33333333-3333-3333-3333-333333333338', 'Sorting Implementation', 'Implement and compare sorting algorithms', '2023-03-05', 'https://example.com/assignments/sorting-impl.pdf', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc'),
-('44444444-4444-4444-4444-444444444449', 'Graph Algorithms', 'Implement Dijkstra and Prim algorithms', '2023-03-20', 'https://example.com/assignments/graph-algos.pdf', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc'),
-
--- Database assignments
-('55555555-5555-5555-5555-555555555550', 'Database Design', 'Design a database schema for a library', '2023-03-10', 'https://example.com/assignments/db-design.pdf', 'cccccccc-cccc-cccc-cccc-cccccccccccd'),
-
--- Management assignments
-('66666666-6666-6666-6666-666666666661', 'Case Study Analysis', 'Analyze a management case study', '2023-03-08', 'https://example.com/assignments/case-study.pdf', 'dddddddd-dddd-dddd-dddd-ddddddddddde'),
-
--- Finance assignments
-('77777777-7777-7777-7777-777777777772', 'Financial Statements', 'Prepare financial statements for a sample company', '2023-03-12', 'https://example.com/assignments/fin-statements.pdf', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeef');
-
--- Inserting Submissions
-INSERT INTO `Submission` (`id_submission`, `id_assignment`, `id_user`, `submitted_at`, `file`, `grade`, `concept`, `feedback`) VALUES
--- Alice's submissions
-('88888888-8888-8888-8888-888888888883', '11111111-1111-1111-1111-111111111116', '66666666-6666-6666-6666-666666666666', '2023-02-28 14:30:00', 'https://example.com/submissions/alice-ex1.zip', 9.5, 'Excellent', 'Great job! Code is well structured.'),
-('99999999-9999-9999-9999-999999999994', '22222222-2222-2222-2222-222222222227', '66666666-6666-6666-6666-666666666666', '2023-03-14 16:45:00', 'https://example.com/submissions/alice-midterm.zip', 8.0, 'Good', 'Good implementation but needs better documentation.'),
-
--- Bob's submissions
-('00000000-0000-0000-0000-000000000015', '11111111-1111-1111-1111-111111111116', '77777777-7777-7777-7777-777777777777', '2023-02-28 15:20:00', 'https://example.com/submissions/bob-ex1.zip', 7.5, 'Good', 'Works well but could be more efficient.'),
-('11111111-1111-1111-1111-111111111117', '33333333-3333-3333-3333-333333333338', '77777777-7777-7777-7777-777777777777', '2023-03-04 11:10:00', 'https://example.com/submissions/bob-sorting.zip', 8.5, 'Very Good', 'Good comparison analysis.'),
-
--- Charlie's submissions
-('22222222-2222-2222-2222-222222222228', '33333333-3333-3333-3333-333333333338', '88888888-8888-8888-8888-888888888888', '2023-03-05 09:30:00', 'https://example.com/submissions/charlie-sorting.zip', 9.0, 'Excellent', 'Very efficient implementations.'),
-('33333333-3333-3333-3333-333333333339', '55555555-5555-5555-5555-555555555550', '88888888-8888-8888-8888-888888888888', '2023-03-09 17:00:00', 'https://example.com/submissions/charlie-dbdesign.pdf', 8.0, 'Good', 'Good design but missing some constraints.'),
-
--- Dana's submissions
-('44444444-4444-4444-4444-444444444450', '66666666-6666-6666-6666-666666666661', '99999999-9999-9999-9999-999999999999', '2023-03-07 14:15:00', 'https://example.com/submissions/dana-case.pdf', 9.5, 'Excellent', 'Very thorough analysis.'),
-
--- Evan's submissions
-('55555555-5555-5555-5555-555555555551', '66666666-6666-6666-6666-666666666661', '00000000-0000-0000-0000-000000000001', '2023-03-08 10:00:00', 'https://example.com/submissions/evan-case.pdf', 7.0, 'Satisfactory', 'Needs more depth in recommendations.'),
-('66666666-6666-6666-6666-666666666662', '77777777-7777-7777-7777-777777777772', '00000000-0000-0000-0000-000000000001', '2023-03-11 13:45:00', 'https://example.com/submissions/evan-financials.xlsx', 8.5, 'Very Good', 'Well prepared with minor calculation errors.');
-
--- Inserting ForumMessages
-INSERT INTO `ForumMessage` (`id_message`, `id_discipline`, `content`, `created_at`, `changed_at`) VALUES
--- Computer Science forum
-('77777777-7777-7777-7777-777777777773', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac', 'Hello everyone! I have a question about the first programming assignment. Can we use functions we haven\'t covered in class yet?', '2023-02-10 13:25:00', '2023-02-10 13:25:00'),
-('88888888-8888-8888-8888-888888888884', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac', 'Yes, you can use any Python features you want as long as they help solve the problem correctly.', '2023-02-10 14:30:00', '2023-02-10 14:30:00'),
-
--- Algorithms forum
-('99999999-9999-9999-9999-999999999995', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc', 'For the sorting assignment, should we implement all algorithms from scratch or can we use built-in functions for parts of them?', '2023-02-15 11:20:00', '2023-02-15 11:20:00'),
-('00000000-0000-0000-0000-000000000016', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc', 'You should implement the core algorithms yourself. You can use built-in functions for auxiliary operations like generating random numbers.', '2023-02-15 12:45:00', '2023-02-15 12:45:00'),
-
--- Management forum
-('11111111-1111-1111-1111-111111111118', 'dddddddd-dddd-dddd-dddd-ddddddddddde', 'For the case study, how many references should we include?', '2023-02-20 09:15:00', '2023-02-20 09:15:00'),
-('22222222-2222-2222-2222-222222222229', 'dddddddd-dddd-dddd-dddd-ddddddddddde', 'At least 5 academic references are required for full marks.', '2023-02-20 10:30:00', '2023-02-20 10:30:00');
-
--- Inserting Events
-INSERT INTO `Event` (`id_event`, `title`, `description`, `event_date`, `created_at`, `changed_at`) VALUES
--- Institutional Events
-('33333333-3333-3333-3333-333333333340', 'Orientation Day', 'Welcome event for new students', '2023-01-20 09:00:00', '2023-01-05 10:00:00', '2023-01-05 10:00:00'),
-('44444444-4444-4444-4444-444444444451', 'Career Fair', 'Annual career fair with top companies', '2023-04-15 10:00:00', '2023-01-10 11:00:00', '2023-01-10 11:00:00'),
-
--- Discipline Events
-('55555555-5555-5555-5555-555555555552', 'Guest Lecture: AI in Industry', 'Special lecture by industry expert on AI applications', '2023-02-28 14:00:00', '2023-01-15 12:00:00', '2023-01-15 12:00:00'),
-('66666666-6666-6666-6666-666666666663', 'Midterm Review Session', 'Review session before the midterm exam', '2023-03-10 16:00:00', '2023-01-20 13:00:00', '2023-01-20 13:00:00'),
-
--- User Events
-('77777777-7777-7777-7777-777777777774', 'Study Group Meeting', 'Study group for the algorithms class', '2023-03-05 18:00:00', '2023-02-01 14:00:00', '2023-02-01 14:00:00'),
-('88888888-8888-8888-8888-888888888885', 'Project Deadline Reminder', 'Reminder for the database project deadline', '2023-03-09 23:59:00', '2023-02-05 15:00:00', '2023-02-05 15:00:00');
-
--- Inserting Institutional Events
-INSERT INTO `InstitutionalEvent` (`id_institutional_event`, `id_event`, `id_institute`) VALUES
-('99999999-9999-9999-9999-999999999996', '33333333-3333-3333-3333-333333333340', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'),
-('00000000-0000-0000-0000-000000000017', '44444444-4444-4444-4444-444444444451', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb');
-
--- Inserting Discipline Events
-INSERT INTO `DisciplineEvent` (`id_discipline_event`, `id_event`, `id_discipline`) VALUES
-('11111111-1111-1111-1111-111111111119', '55555555-5555-5555-5555-555555555552', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaac'),
-('22222222-2222-2222-2222-222222222230', '66666666-6666-6666-6666-666666666663', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc');
-
--- Inserting User Events
-INSERT INTO `UserEvent` (`id_user_event`, `id_event`, `id_user`) VALUES
-('33333333-3333-3333-3333-333333333341', '77777777-7777-7777-7777-777777777774', '77777777-7777-7777-7777-777777777777'),
-('44444444-4444-4444-4444-444444444452', '88888888-8888-8888-8888-888888888885', '88888888-8888-8888-8888-888888888888');
+-- Inserir dados na tabela `jwt_blacklists`
+INSERT INTO `jwt_blacklists` (`id_jwt_blacklists`, `token`, `expires_at`) VALUES
+('u6dee6x2-s4t2-4u43-r3mv-9w1u2x3w4t77', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c', '2025-05-20 10:00:00');
