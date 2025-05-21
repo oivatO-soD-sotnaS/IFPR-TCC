@@ -12,6 +12,11 @@ Dito isso, segue abaixo uma lista de comandos para utilizar da aplicação de fo
 
 > Este repositório permanecerá recebendo atualizações até o dia 15/12/2025.
 
+## Definindo hosts
+A aplicação do back-end utiliza dois hosts virtuais para separar o servidor de arquivos do servidor da API, files.intellecta.com e api.intellecta.com, respectivamente. Portanto, é necessário instruir ao seu computador como resolver os subdomínios, para isso:
+```bash
+echo "127.0.0.1  api.intellecta.com files.intellecta.com" | sudo tee -a /etc/hosts
+```
 ## Inicializando a aplicação
 ```bash
 sudo docker compose up --build
