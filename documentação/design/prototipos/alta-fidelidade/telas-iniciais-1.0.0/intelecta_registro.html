@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se no Intelecta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cores principais */
+            --cor-branco: #FFFFFF;
+            --cor-azul-claro: #F5F7FA;
+            --cor-azul-escuro: #0A1E3F;
+            --cor-azul-medio: #1A4B8C;
+            --cor-roxo: #7B4ACA;
+            --cor-roxo-claro: #9B6FE0;
+            --cor-cinza-claro: #E0E0E0;
+            --cor-texto: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cor-azul-claro);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+        }
+
+        .bg-circle-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--cor-roxo);
+            top: -150px;
+            right: -100px;
+        }
+
+        .bg-circle-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--cor-azul-medio);
+            bottom: -100px;
+            left: -80px;
+        }
+
+        .bg-pattern {
+            position: absolute;
+            opacity: 0.03;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231A4B8C' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 4px 6px rgba(10, 30, 63, 0.2));
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--cor-azul-escuro);
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: var(--cor-azul-medio);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .form-container {
+            background-color: var(--cor-branco);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--cor-azul-escuro);
+            font-size: 14px;
+        }
+
+        label .required {
+            color: var(--cor-roxo);
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid var(--cor-cinza-claro);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            color: var(--cor-texto);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--cor-roxo);
+            box-shadow: 0 0 0 2px rgba(123, 74, 202, 0.2);
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--cor-azul-medio);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .password-toggle:focus {
+            outline: 2px solid var(--cor-roxo-claro);
+            border-radius: 4px;
+        }
+
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 12px;
+            border: 1px solid var(--cor-cinza-claro);
+            border-radius: 8px;
+            background-color: #FAFAFA;
+        }
+
+        .captcha-checkbox {
+            width: 22px;
+            height: 22px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        .captcha-text {
+            font-size: 15px;
+            color: var(--cor-texto);
+            cursor: pointer;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--cor-azul-medio), var(--cor-roxo));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(123, 74, 202, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(123, 74, 202, 0.4);
+            background: linear-gradient(135deg, #1e5aa0, #8a5bd4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(123, 74, 202, 0.4);
+        }
+
+        .btn:focus {
+            outline: 2px solid var(--cor-roxo-claro);
+            outline-offset: 2px;
+        }
+
+        .terms {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--cor-azul-medio);
+            line-height: 1.5;
+        }
+
+        .terms a {
+            color: var(--cor-roxo);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .terms a:focus {
+            outline: 2px solid var(--cor-roxo-claro);
+            outline-offset: 2px;
+        }
+
+        /* Elementos educacionais decorativos */
+        .edu-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .edu-element {
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .edu-element-1 {
+            top: 15%;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+
+        .edu-element-2 {
+            bottom: 20%;
+            right: 5%;
+            transform: rotate(10deg);
+        }
+
+        .edu-element-3 {
+            top: 40%;
+            right: 8%;
+            transform: rotate(-5deg);
+        }
+
+        .edu-element-4 {
+            bottom: 35%;
+            left: 7%;
+            transform: rotate(20deg);
+        }
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+            }
+
+            input {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 14px;
+            }
+        }
+
+        /* Acessibilidade - Alto contraste */
+        @media (prefers-contrast: high) {
+            body {
+                background-color: white;
+            }
+
+            .form-container {
+                border: 2px solid black;
+                box-shadow: none;
+            }
+
+            input {
+                border: 2px solid black;
+            }
+
+            .btn {
+                background: var(--cor-roxo);
+                box-shadow: none;
+            }
+
+            .terms a {
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-pattern"></div>
+    </div>
+
+    <div class="edu-elements">
+        <!-- Livro -->
+        <svg class="edu-element edu-element-1" width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 19.5V4.5C4 3.4 4.9 2.5 6 2.5H18C19.1 2.5 20 3.4 20 4.5V19.5C20 20.6 19.1 21.5 18 21.5H6C4.9 21.5 4 20.6 4 19.5Z" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 7.5V16.5" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 11.5H16" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        
+        <!-- Balão de diálogo -->
+        <svg class="edu-element edu-element-2" width="45" height="45" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        
+        <!-- Lápis -->
+        <svg class="edu-element edu-element-3" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.5 3.5L20.5 6.5L6.5 20.5L3.5 17.5L17.5 3.5Z" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 6L18 9" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3.5 17.5L2 22L6.5 20.5" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        
+        <!-- Computador -->
+        <svg class="edu-element edu-element-4" width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4C2.89543 4 2 4.89543 2 6V15C2 16.1046 2.89543 17 4 17H20C21.1046 17 22 16.1046 22 15V6C22 4.89543 21.1046 4 20 4Z" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 21H16" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 17V21" stroke="#0A1E3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="logo-container">
+            <svg class="logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 20C55.8172 20 20 55.8172 20 100C20 144.183 55.8172 180 100 180C144.183 180 180 144.183 180 100C180 55.8172 144.183 20 100 20Z" fill="url(#paint0_linear)"/>
+                <path d="M75 50C70 50 65 55 65 60V140C65 145 70 150 75 150H125C130 150 135 145 135 140V60C135 55 130 50 125 50H75Z" fill="white" fill-opacity="0.2"/>
+                <path d="M75 50C70 50 65 55 65 60V140C65 145 70 150 75 150H125C130 150 135 145 135 140V60C135 55 130 50 125 50H75Z" stroke="white" stroke-width="6"/>
+                <path d="M80 80H120" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                <path d="M80 100H120" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                <path d="M80 120H100" stroke="white" stroke-width="6" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="paint0_linear" x1="20" y1="20" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#1A4B8C"/>
+                        <stop offset="1" stop-color="#7B4ACA"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="header">
+            <h1>Cadastre-se no Intelecta</h1>
+            <p class="subtitle">Sua plataforma educacional integrada</p>
+            <p class="subtitle">Comece a aprender e colaborar agora</p>
+        </div>
+
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label for="nome">Nome completo <span class="required">*</span></label>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo" required aria-required="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" placeholder="Digite seu email" required aria-required="true">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="senha">Senha <span class="required">*</span></label>
+                    <div class="password-container">
+                        <input type="password" id="senha" placeholder="Crie uma senha segura" required aria-required="true">
+                        <button type="button" class="password-toggle" aria-label="Mostrar ou ocultar senha">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="captcha-container">
+                    <input type="checkbox" class="captcha-checkbox" id="captcha" aria-label="Verificação de segurança">
+                    <label for="captcha" class="captcha-text">Sou humano</label>
+                </div>
+
+                <button type="submit" class="btn">Inscrever-se</button>
+            </form>
+        </div>
+
+        <div class="terms">
+            Ao se inscrever, você concorda com nossos <a href="#" tabindex="0">Termos de Uso</a> e <a href="#" tabindex="0">Política de Privacidade</a>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.querySelector('.password-toggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('senha');
+            const button = this;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                button.setAttribute('aria-label', 'Ocultar senha');
+            } else {
+                passwordInput.type = 'password';
+                button.setAttribute('aria-label', 'Mostrar senha');
+            }
+        });
+    </script>
+</body>
+</html>
