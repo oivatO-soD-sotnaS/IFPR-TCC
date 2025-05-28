@@ -1,6 +1,6 @@
-## 📄 Padrão de Commits – Projeto
+## Padrão de Commits – Projeto
 
-### ✅ Estrutura do Commit
+### Estrutura do Commit
 
 ```
 <tipo>[escopo opcional]: <descrição curta>
@@ -12,7 +12,7 @@
 
 ---
 
-### 📂 Divisão por Escopos
+### Divisão por Escopos
 
 - `frontend`: código do frontend, componentes React, estilização, UX, etc.
 - `backend`: rotas, controladores, serviços, lógica de negócio, validações, etc.
@@ -25,7 +25,7 @@
 
 ---
 
-### 🧩 Tipos de Commit
+### Tipos de Commit
 
 | Tipo       | Significado |
 |------------|-------------|
@@ -38,12 +38,11 @@
 | `test`     | Adição ou modificação de testes |
 | `docs`     | Alterações na documentação |
 | `build`    | Mudanças que afetam o processo de build |
-| `ci`       | Alterações nos pipelines de integração contínua |
 | `revert`   | Reversão de um commit anterior |
 
 ---
 
-### 🧪 Exemplos
+### Exemplos
 
 ```bash
 feat(frontend): criar componente de botão primário

@@ -205,6 +205,17 @@ CREATE TABLE `user_events` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
 );
 
+-- Tabela de notificações
+CREATE TABLE `notifications` (
+  `notification_id` CHAR(36) PRIMARY KEY,
+  `user_id` CHAR(36) NOT NULL,
+  `event_id` CHAR(36) NOT NULL,
+  `seen` BOOLEAN NOT NULL DEFAULT FALSE, -- Indica se o usuário já viu a notificação
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`event_id`) REFERENCES `events`(`event_id`) ON DELETE CASCADE
+);
+
 -- Tabela de tokens JWT invalidados
 CREATE TABLE `jwt_blacklists` (
   `jwt_blacklists_id` CHAR(36) NOT NULL PRIMARY KEY,
