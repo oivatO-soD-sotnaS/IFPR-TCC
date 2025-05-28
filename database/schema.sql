@@ -31,8 +31,8 @@ CREATE TABLE `institutions` (
   `description` TEXT,
   `thumbnail_id` CHAR(36),
   `banner_id` CHAR(36),
-  `user_id` CHAR(36) NOT NULL, -- ID do usuário que criou a instituição
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE,
+  `owner_id` CHAR(36) NOT NULL, -- ID do usuário que criou a instituição
+  FOREIGN KEY (`owner_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE,
   FOREIGN KEY (`thumbnail_id`) REFERENCES `files`(`file_id`) ON DELETE SET NULL,
   FOREIGN KEY (`banner_id`) REFERENCES `files`(`file_id`) ON DELETE SET NULL
 );
@@ -43,9 +43,9 @@ CREATE TABLE `institution_users` (
   `role` ENUM('student', 'teacher', 'admin') NOT NULL DEFAULT 'student',
   `joined_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `institution_id` CHAR(36) NOT NULL,
-  `owner_id` CHAR(36) NOT NULL,
+  `user_id` CHAR(36) NOT NULL,
   FOREIGN KEY (`institution_id`) REFERENCES `institutions`(`institution_id`) ON DELETE CASCADE,
-  FOREIGN KEY (`owner_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE,
   UNIQUE (`institution_id`, `user_id`)
 );
 
@@ -144,7 +144,7 @@ CREATE TABLE `submissions` (
   `concept` VARCHAR(255),
   `feedback` TEXT,
   `assignment_id` CHAR(36) NOT NULL,
-  `user_id` CHAR(36) NOT NULL,
+  `user_id` CHAR(36),
   `file_id` CHAR(36),
   FOREIGN KEY (`file_id`) REFERENCES `files`(`file_id`) ON DELETE SET NULL,
   FOREIGN KEY (`assignment_id`) REFERENCES `assignments`(`assignment_id`) ON DELETE CASCADE,
