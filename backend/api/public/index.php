@@ -73,6 +73,7 @@ $app->add(App\Middleware\AddJsonResponseHeader::class);
 
 // Rotas de auth
 $app->post('/auth/login', App\Controllers\AuthController::class . ':login');
+$app->post('/auth/logout', App\Controllers\AuthController::class . ':logout');
 
 // Implementa middlware que valida token de autenticação
 

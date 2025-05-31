@@ -17,7 +17,6 @@
 - `frontend`: código do frontend, componentes React, estilização, UX, etc.
 - `backend`: rotas, controladores, serviços, lógica de negócio, validações, etc.
 - `db`: alterações no banco de dados, modelos, migrations, seeds, etc.
-- `api`: comunicação entre frontend e backend (fetch, axios, rotas).
 - `config`: configurações de ambiente, docker, linter, CI/CD.
 - `docs`: documentação do projeto.
 - `infra`: configurações de infraestrutura (ex: NGINX, CI/CD).

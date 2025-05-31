@@ -5,6 +5,7 @@ declare(strict_types= 1);
 namespace App\Controllers;
 
 use Slim\Exception\HttpBadRequestException;
+use Slim\Exception\HttpInternalServerErrorException;
 use Slim\Exception\HttpUnauthorizedException;
 use Slim\Psr7\Response;
 use Slim\Psr7\Request;
@@ -40,6 +41,8 @@ class AuthController {
     
     if (! $user) {
       throw new HttpNotFoundException($request, message:'User not found');
+    }else if (! $user->isEmailVerified()) {
+      throw new HttpNotFoundException($request, message:'User not found');
     }
 
     if ($user->getPasswordHash() !== $password){
@@ -57,5 +60,44 @@ class AuthController {
     ]));
     
     return $response;
+  }
+
+  public function logout(Request $request, Response $response): Response {
+    $authHeader = $request->getHeaderLine("Authorization");
+    
+    if (empty($authHeader)) {
+      throw new HttpUnauthorizedException($request, 'Authorization header is required');
+    }
+
+    if (!preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
+      throw new HttpUnauthorizedException($request, 'Malformed authorization header');
+    }
+    
+    $token = $matches[1];
+    
+    if (empty($token) || count(explode('.', $token)) !== 3) {
+      throw new HttpUnauthorizedException($request, 'Invalid token format');
+    }
+
+    try {
+      $decoded = $this->jwtService->validateToken($token);
+      
+      if (!$decoded) {
+        throw new HttpUnauthorizedException($request, 'Invalid token');
+      }
+      
+      if (! $this->jwtService->blacklistJwt($token)){
+        throw new HttpInternalServerErrorException($request, 'There was an error when trying to blacklist yout token.');
+      }
+      
+      $response->getBody()->write(json_encode([
+        'status' => 'success',
+        'message' => 'Token blacklisted with success'
+      ]));
+
+      return $response;
+    } catch (\Exception $e) {
+      throw new HttpUnauthorizedException($request, 'Token validation failed: ' . $e->getMessage());
+    }
   }
 }

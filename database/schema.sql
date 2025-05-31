@@ -219,6 +219,6 @@ CREATE TABLE `notifications` (
 -- Tabela de tokens JWT invalidados
 CREATE TABLE `jwt_blacklists` (
   `jwt_blacklists_id` CHAR(36) NOT NULL PRIMARY KEY,
-  `token` TEXT,
+  `token_hash` TEXT,
   `expires_at` DATETIME NOT NULL
 );
